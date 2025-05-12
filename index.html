@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CJToldos</title>
+  <meta name="description" content="Soluciones personalizadas de alta calidad para toldos, cortinas y mosquiteras en Figueres, Girona">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="https://res.cloudinary.com/dgykltswe/image/upload/v1744899367/87d3b39a-a406-4538-9829-bb562c65fa4d-removebg-preview_fit7tt.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    /* RESET */
+    :root {
+      --color-primary: #002b5b;
+      --color-secondary: #004080;
+      --color-accent: #d4a017;
+      --color-light: #f8f9fa;
+      --color-dark: #333;
+      --color-white: #fff;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.15);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.2);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.3);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--color-dark);
+      background-color: var(--color-light);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ESTRUCTURA GENERAL */
+    section {
+      width: 100%;
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      color: var(--color-white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--color-white);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .navbar-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, var(--color-accent), #f0c05a);
+      color: var(--color-primary);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #b88b14, var(--color-accent));
+      transform: scale(1.05);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-white);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(45deg, #001a3a, var(--color-primary));
+      transform: scale(1.05);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* CARRITO BOTONES */
+    .cart-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-white);
+      font-size: 20px;
+      padding: 10px;
+      position: relative;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .cart-btn:hover {
+      color: var(--color-accent);
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      font-size: 12px;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .cart-btn:hover .cart-count {
+      transform: scale(1.3);
+      background: var(--color-white);
+      color: var(--color-accent);
+    }
+
+    /* MENU */
+    .contact-dropdown {
+      position: relative;
+    }
+
+    .contact-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: var(--color-white);
+      color: var(--color-dark);
+      min-width: 220px;
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 8px;
+      animation: slideDown 0.3s ease;
+      border: 1px solid #eee;
+    }
+
+    .contact-menu p {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .contact-menu i {
+      color: var(--color-primary);
+    }
+
+    .contact-menu a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-menu a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    .contact-dropdown.active .contact-menu {
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      background: url('https://res.cloudinary.com/dgykltswe/image/upload/v1744900283/153fab97-d132-4772-9e06-9d9971518044_q2u590.png') no-repeat center center/cover;
+      height: 100vh;
+      min-height: 500px;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      animation: fadeIn 1s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--color-primary);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--color-dark);
+      margin-bottom: 25px;
+    }
+
+    /* SOBRE NOSOTROS */
+    #sobre-nosotros {
+      background: linear-gradient(180deg, #f2f2f2 0%, #e5ecfb 100%);
+    }
+
+    .sobre-contenido {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .texto-sobre {
+      flex: 1;
+      min-width: 300px;
+      background: var(--color-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .texto-sobre h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--color-primary);
+      margin: 15px 0;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #cfe2ff, #e5ecfb);
+    }
+
+    .texto-sobre hr {
+      width: 100px;
+      border: 4px solid var(--color-primary);
+      margin-bottom: 25px;
+      border-radius: 2px;
+    }
+
+    .texto-sobre p {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .logo-img {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-img img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .logo-img img:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* GALERIA DE PRODUCTOS */
+    #productos {
+      background: var(--color-white);
+    }
+
+    .galeria-titulo {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 60px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+    }
+
+    .productos-wrapper {
+      position: relative;
+      padding: 0 40px;
+    }
+
+    .productos-grid {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+
+    .productos-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .producto-card {
+      flex: 0 0 calc(100% - 20px);
+      scroll-snap-align: start;
+      background: var(--color-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+    }
+
+    @media (min-width: 640px) {
+      .producto-card {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .producto-card {
+        flex: 0 0 calc(33.333% - 20px);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .producto-card {
+        flex: 0 0 calc(25% - 20px);
+      }
+    }
+
+    .producto-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .producto-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .producto-info {
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .producto-nombre {
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    .producto-precio {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+
+    .galeria-nav {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.7);
+      color: var(--color-white);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 24px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .galeria-nav:hover {
+      background: var(--color-primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .galeria-nav.prev {
+      left: 10px;
+    }
+
+    .galeria-nav.next {
+      right: 10px;
+    }
+
+    .galeria-indicadores {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .indicador {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .indicador.active {
+      background: var(--color-primary);
+      transform: scale(1.2);
+    }
+
+    /* MODALES */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      max-width: 800px;
+      margin: 60px auto;
+      background: var(--color-white);
+      padding: 40px;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+
+    #galeria-modal .modal-content {
+      max-width: 95%;
+      width: 95%;
+      margin: 20px auto;
+      padding: 20px;
+      background: transparent;
+      box-shadow: none;
+      position: relative;
+    }
+
+    #galeria-modal .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      max-height: 80vh;
+      padding: 10px;
+    }
+
+    #galeria-modal .producto-card {
+      background: transparent;
+      box-shadow: none;
+      position: relative;
+    }
+
+    #galeria-modal .producto-info {
+      display: none;
+    }
+
+    #galeria-modal .producto-img {
+      height: 300px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    #galeria-modal .producto-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Modal de imagen ampliada */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1100;
+      overflow: hidden;
+    }
+
+    .image-modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .image-modal-content img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .close-image-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1101;
+    }
+
+    /* Cruz para cerrar galería */
+    .close-gallery-btn {
+      position: fixed; 
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 1001;
+      background: transparent;
+      border: none;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .close-gallery-btn:hover {
+      transform: scale(1.2);
+      color: var(--color-accent);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 30px;
+      cursor: pointer;
+      color: var(--color-primary);
+      transition: var(--transition);
+    }
+
+    .close-btn:hover {
+      color: var(--color-secondary);
+      transform: scale(1.1);
+    }
+
+    .modal h2 {
+      text-align: center;
+      color: var(--color-primary);
+      margin-bottom: 30px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    /* Formularios */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 8px rgba(0,43,91,0.2);
+      outline: none;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Carrito */
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-name {
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    .cart-item-price {
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-right: 15px;
+    }
+
+    .cart-item-remove {
+      background: #dc3545;
+      color: var(--color-white);
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cart-item-remove:hover {
+      background: #c82333;
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #666;
+      padding: 20px 0;
+    }
+
+    
+    /* Mensaje de exito */
+    .thank-you-message {
+      text-align: center;
+      padding: 30px 0;
+      display: none;
+    }
+
+    .thank-you-message h2 {
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      color: var(--color-white);
+      padding: 30px 20px;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .footer-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .social-links a {
+      color: var(--color-white);
+      font-size: 24px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--color-accent);
+      transform: translateY(-5px);
+    }
+
+    .footer-info p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .map-container {
+      flex: 1;
+      min-width: 300px;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* MENU MOVIL */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .mobile-nav {
+      display: none;
+      width: 100%;
+      background: var(--color-primary);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 999;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav-links a {
+      color: var(--color-white);
+      text-decoration: none;
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: var(--transition);
+    }
+
+    .mobile-nav-links a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from { 
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      
+      .hero-content {
+        padding: 20px;
+      }
+      
+      .texto-sobre {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero {
+        padding: 15px;
+        height: auto;
+        min-height: 70vh;
+      }
+      
+      .hero-content {
+        margin-top: 80px;
+      }
+      
+      .productos-wrapper {
+        padding: 0 15px;
+      }
+      
+      .galeria-nav {
+        display: flex;
+      }
+      
+      .modal-content {
+        padding: 30px 20px;
+      }
+      
+      /* Footer moviles */
+      footer {
+        padding: 25px 15px;
+      }
+      
+      .map-container {
+        height: 200px;
+      }
+      
+      /* Ajustes para la cruz en móviles */
+      .close-gallery-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      
+      .texto-sobre {
+        padding: 20px;
+      }
+      
+      .texto-sobre h2 {
+        font-size: 1.5rem;
+      }
+      
+      .footer-container {
+        flex-direction: column;
+      }
+      
+      .map-container {
+        height: 200px;
+      }
+      
+      .footer-content {
+        margin-bottom: 20px;
+      }
+      
+      /* Ajustes para la cruz en móviles pequeños */
+      .close-gallery-btn {
+        top: 15px;
+        right: 15px;
+        font-size: 30px;
+      }
+    }
+    
+    /* CENTRAR IMÁGENES EN PRODUCTOS */
+    .productos-grid {
+      justify-content: center; 
+      flex-wrap: wrap; 
+      overflow-x: hidden; 
+    }
+    
+    .producto-card {
+      margin: 10px; 
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation">
+    <button class="menu-toggle" aria-label="Menú" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="nav-links">
+      <a href="#" aria-current="page">Inicio</a>
+      <a href="#sobre-nosotros">Sobre Nosotros</a>
+      <a href="#" id="open-contacto">Contáctenos</a>
+    </div>
+    
+    <div class="mobile-nav">
+      <div class="mobile-nav-links">
+        <a href="#" aria-current="page">Inicio</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+        <a href="#" id="open-contacto-mobile">Contáctenos</a>
+      </div>
+    </div>
+    
+    <div class="navbar-buttons">
+      <div class="contact-dropdown">
+        <button class="btn btn-primary" id="contacto-btn" aria-expanded="false" aria-haspopup="true">
+          <i class="fas fa-address-book"></i> <span style="margin-left: 8px;">Contacto</span> <!-- Añadido espacio entre icono y texto -->
+        </button>
+        <div class="contact-menu" role="menu">
+          <p><i class="fas fa-phone"></i> <a href="tel:+34672380669">672 380 669</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:jjperilla75@gmail.com">jjperilla75@gmail.com</a></p>
+        </div>
+      </div>
+      
+      <button class="cart-btn" id="cart-btn" aria-label="Carrito">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div class="hero-content">
+      <h1>Toldos, Cortinas y Mosquiteras</h1>
+      <p>Soluciones personalizadas de alta calidad para su hogar o negocio.</p>
+      <a href="#sobre-nosotros" class="btn btn-secondary">DESCUBRA MÁS</a>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre-nosotros" aria-labelledby="sobre-nosotros-title">
+    <div class="container">
+      <div class="sobre-contenido">
+        <div class="texto-sobre">
+          <p>Sobre nosotros</p>
+          <h2 id="sobre-nosotros-title">Nuestra Empresa</h2>
+          <hr>
+          <p>
+            En CJToldos, nos especializamos en la instalación y reparación de toldos, cortinas, mosquiteras y persianas, ofreciendo soluciones a medida para cada cliente. Nuestro equipo de expertos le asesorará para encontrar la mejor opción, garantizando calidad y satisfacción. Ofrecemos presupuestos sin compromiso, adaptados a sus necesidades.
+          </p>
+          <a href="#productos" class="btn btn-secondary">EXPLORE NUESTROS PRODUCTOS</a>
+        </div>
+        
+        <div class="logo-img">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1744899367/87d3b39a-a406-4538-9829-bb562c65fa4d-removebg-preview_fit7tt.png" 
+               alt="Logo Sol y Sombra" 
+               loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA DE PRODUCTOS -->
+  <section id="productos" aria-labelledby="productos-title">
+    <div class="container">
+      <h2 class="galeria-titulo" id="productos-title">Nuestros Productos</h2>
+      
+      <div class="productos-wrapper">
+        <button class="galeria-nav prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <button class="galeria-nav next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="productos-grid" role="region" aria-label="Galería de productos">
+          <!-- Producto 1 -->
+          <div class="producto-card">
+            <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1744912531/eeeeeeeeeeeeee_f6taid.jpg" 
+                 alt="Mosquiteras" 
+                 class="producto-img" 
+                 loading="lazy">
+            <div class="producto-info">
+              <div class="producto-nombre">Mosquiteras</div>
+              <button class="btn btn-secondary add-to-cart" 
+                      data-name="Mosquiteras" 
+                      data-price="100">
+                AÑADIR AL CARRITO
+              </button>
+            </div>
+          </div>
+          
+          <!-- Producto 2 -->
+          <div class="producto-card">
+            <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1744912261/eeeeeeeee_hq8yal.jpg" 
+                 alt="Toldos" 
+                 class="producto-img" 
+                 loading="lazy">
+            <div class="producto-info">
+              <div class="producto-nombre">Toldos</div>
+              <button class="btn btn-secondary add-to-cart" 
+                      data-name="Toldos" 
+                      data-price="100">
+                AÑADIR AL CARRITO
+              </button>
+            </div>
+          </div>
+          
+          <!-- Producto 3 -->
+          <div class="producto-card">
+            <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1744912413/curtain-with-sunlight_ltzbby.jpg" 
+                 alt="Cortinas" 
+                 class="producto-img" 
+                 loading="lazy">
+            <div class="producto-info">
+              <div class="producto-nombre">Cortinas</div>
+              <button class="btn btn-secondary add-to-cart" 
+                      data-name="Cortinas" 
+                      data-price="100">
+                AÑADIR AL CARRITO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="galeria-indicadores">
+        <div class="indicador active" aria-label="Slide 1"></div>
+        <div class="indicador" aria-label="Slide 2"></div>
+        <div class="indicador" aria-label="Slide 3"></div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 30px;">
+        <button class="btn btn-secondary" id="ver-galeria-btn">
+          Ejemplos
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL GALERIA COMPLETA -->
+  <div class="modal" id="galeria-modal" role="dialog" aria-modal="true" aria-labelledby="galeria-modal-title">
+    <div class="modal-content">
+      <button class="close-gallery-btn" id="close-galeria-modal">&times;</button>
+      
+      <div class="productos-grid">
+        <!-- Producto 1 -->
+        <div class="producto-card">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1745413602/toldo_22_atoabu.jpg" 
+               alt="Toldo" 
+               class="producto-img" 
+               loading="lazy">
+        </div>
+        
+        <!-- Producto 2 -->
+        <div class="producto-card">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1745413598/cortinas_p67mqh.jpg" 
+               alt="Cortina" 
+               class="producto-img" 
+               loading="lazy">
+        </div>
+        
+        <!-- Producto 3 -->
+        <div class="producto-card">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1745413601/mosquiteras_saz5xj.jpg" 
+               alt="Mosquiteras" 
+               class="producto-img" 
+               loading="lazy">
+        </div>
+        
+        <!-- Producto 4 -->
+        <div class="producto-card">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1745413583/tttt_b8f9j3.jpg" 
+               alt="Toldo" 
+               class="producto-img" 
+               loading="lazy">
+        </div>
+        
+        <!-- Producto 5 -->
+        <div class="producto-card">
+          <img src="https://res.cloudinary.com/dgykltswe/image/upload/v1745413548/toldo_qcrkjc.jpg" 
+               alt="Toldo" 
+               class="producto-img" 
+               loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL IMAGEN AMPLIADA -->
+  <div class="image-modal" id="image-modal">
+    <span class="close-image-btn">&times;</span>
+    <div class="image-modal-content">
+      <img id="expanded-image" src="" alt="Imagen ampliada">
+    </div>
+  </div>
+
+  <!-- MODAL CONTACTO -->
+  <div class="modal" id="contacto-modal" role="dialog" aria-modal="true" aria-labelledby="contacto-modal-title">
+    <div class="modal-content">
+      <span class="close-btn" id="close-contacto-modal">&times;</span>
+      
+      <div id="contacto-form-container">
+        <h2 id="contacto-modal-title">Contáctenos</h2>
+        
+        <form id="formulario-contacto">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono">
+          </div>
+          
+          <div class="form-group">
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Seleccione un asunto</option>
+              <option value="presupuesto">Solicitud de presupuesto</option>
+              <option value="consulta">Consulta general</option>
+              <option value="reparacion">Solicitud de reparación</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-secondary" style="width: 100%;">
+            ENVIAR MENSAJE
+          </button>
+        </form>
+      </div>
+      
+      <div class="thank-you-message" id="contacto-thank-you">
+        <h2>¡Gracias por contactarnos!</h2>
+        <p>Hemos recibido su mensaje y nos pondremos en contacto con usted lo antes posible.</p>
+        <button class="btn btn-secondary" id="back-to-home-contacto">
+          VOLVER AL INICIO
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CARRITO -->
+  <div class="modal" id="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
+    <div class="modal-content">
+      <span class="close-btn" id="close-cart-modal">&times;</span>
+      
+      <h2 id="cart-modal-title">Su Selección de Productos</h2>
+      
+      <div id="cart-content">
+        <div class="cart-items" id="cart-items-container">
+          <!-- Los productos del carrito se anadiran aqui -->
+        </div>
+        
+        <form id="formulario-cart">
+          <div class="form-group">
+            <label for="cart-nombre">Nombre completo</label>
+            <input type="text" id="cart-nombre" name="nombre" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-email">Correo electrónico</label>
+            <input type="email" id="cart-email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-telefono">Teléfono</label>
+            <input type="tel" id="cart-telefono" name="telefono" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-mensaje">Comentarios adicionales</label>
+            <textarea id="cart-mensaje" name="mensaje"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-secondary" style="width: 100%;">
+            ENVIAR SOLICITUD
+          </button>
+        </form>
+      </div>
+      
+      <div class="thank-you-message" id="cart-thank-you">
+        <h2>¡Solicitud enviada!</h2>
+        <p>Hemos recibido su selección de productos. Nos pondremos en contacto con usted para personalizar su pedido.</p>
+        <button class="btn btn-secondary" id="back-to-home-cart">
+          VOLVER AL INICIO
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-content">
+          <h3>Nuestras redes sociales</h3>
+          
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/+34672380669" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          
+          <div class="footer-info">
+            <p>© 2025 CJToldos. Todos los derechos reservados.</p>
+            <p>Dirección: Figueres, 17600 (Girona)</p>
+          </div>
+        </div>
+        
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2984.373561463934!2d2.958415315432354!3d42.26586897918774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ba9a60a9d838cd%3A0xccf5f5e6785c5bf9!2s17600%20Figueres%2C%20Girona!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  title="Ubicación de CJToldos en Figueres">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Inicializar EmailJS
+    (function() {
+      emailjs.init("u6MRs9FEfaZ2HCEfI");
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Variables globales
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const body = document.body;
+
+      // FUNCIONES UTILITARIAS 
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = 'block';
+          body.style.overflow = 'hidden';
+          // Enfocar el primer elemento interactivo del modal
+          const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (focusable) focusable.focus();
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = 'none';
+          body.style.overflow = 'auto';
+        }
+      }
+
+      function updateCartCount() {
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+          cartCount.textContent = cart.length;
+        }
+      }
+
+      function updateCartDisplay() {
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartForm = document.getElementById('formulario-cart');
+        
+        if (!cartItemsContainer) return;
+        
+        cartItemsContainer.innerHTML = '';
+        
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = '<p class="cart-empty">No hay productos en el carrito.</p>';
+          if (cartForm) cartForm.style.display = 'none';
+        } else {
+          cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
+              <span class="cart-item-name">${item.name}</span>
+              <button class="cart-item-remove" data-index="${index}">Eliminar</button>
+            `;
+            
+            cartItemsContainer.appendChild(itemElement);
+          });
+          
+          if (cartForm) cartForm.style.display = 'block';
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+      }
+
+      // MANEJADORES DE EVENTOS 
+      
+      // Menu movil
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      
+      if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          mobileNav.classList.toggle('active');
+        });
+        
+        // Cerrar menu al hacer clic en un enlace
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('active');
+          });
+        });
+      }
+      
+      // Dropdown de contacto mejorado
+      const contactoBtn = document.getElementById('contacto-btn');
+      const contactMenu = document.querySelector('.contact-menu');
+      
+      if (contactoBtn && contactMenu) {
+        contactoBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          contactMenu.style.display = isExpanded ? 'none' : 'block';
+        });
+        
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', function() {
+          contactoBtn.setAttribute('aria-expanded', 'false');
+          contactMenu.style.display = 'none';
+        });
+        
+        // Evitar que se cierre al hacer clic dentro del menu
+        contactMenu.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+      
+      // Galeria de productos
+      const productosGrid = document.querySelector('.productos-grid');
+      const prevBtn = document.querySelector('.galeria-nav.prev');
+      const nextBtn = document.querySelector('.galeria-nav.next');
+      const indicadores = document.querySelectorAll('.indicador');
+      
+      if (productosGrid && prevBtn && nextBtn) {
+        const cardWidth = document.querySelector('.producto-card')?.offsetWidth || 300;
+        const gap = 20;
+        
+        function scrollToPosition(position) {
+          productosGrid.scrollTo({
+            left: position,
+            behavior: 'smooth'
+          });
+        }
+        
+        function updateIndicators() {
+          const scrollPosition = productosGrid.scrollLeft;
+          const maxScroll = productosGrid.scrollWidth - productosGrid.clientWidth;
+          const activeIndex = Math.round((scrollPosition / maxScroll) * (indicadores.length - 1));
+          
+          indicadores.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === activeIndex);
+            indicator.setAttribute('aria-selected', index === activeIndex);
+          });
+        }
+        
+        prevBtn.addEventListener('click', function() {
+          const scrollAmount = (cardWidth + gap) * calcularTarjetasVisibles();
+          scrollToPosition(productosGrid.scrollLeft - scrollAmount);
+        });
+        
+        nextBtn.addEventListener('click', function() {
+          const scrollAmount = (cardWidth + gap) * calcularTarjetasVisibles();
+          scrollToPosition(productosGrid.scrollLeft + scrollAmount);
+        });
+        
+        function calcularTarjetasVisibles() {
+          if (!productosGrid) return 1;
+          return Math.floor(productosGrid.clientWidth / (cardWidth + gap));
+        }
+        
+        productosGrid.addEventListener('scroll', updateIndicators);
+        
+        indicadores.forEach((indicator, index) => {
+          indicator.addEventListener('click', function() {
+            const maxScroll = productosGrid.scrollWidth - productosGrid.clientWidth;
+            const scrollPos = (maxScroll / (indicadores.length - 1)) * index;
+            scrollToPosition(scrollPos);
+          });
+        });
+        
+        // Inicializar indicadores
+        updateIndicators();
+      }
+      
+      // Anadir al carrito
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+          const name = this.getAttribute('data-name') || 'Producto';
+          const price = this.getAttribute('data-price') || '0';
+          
+          cart.push({
+            name: name,
+            price: price
+          });
+          
+          updateCartDisplay();
+          
+          // Feedback visual
+          this.textContent = '✓ Añadido';
+          setTimeout(() => {
+            this.textContent = 'AÑADIR AL CARRITO';
+          }, 2000);
+        });
+      });
+      
+      // Eliminar del carrito
+      document.getElementById('cart-items-container')?.addEventListener('click', function(e) {
+        if (e.target.classList.contains('cart-item-remove')) {
+          const index = parseInt(e.target.getAttribute('data-index'));
+          if (!isNaN(index)) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+          }
+        }
+      });
+      
+      // Modales
+      function setupModal(openBtnId, modalId, closeBtnId) {
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        
+        if (openBtn) {
+          openBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(modalId);
+            if (modalId === 'cart-modal') updateCartDisplay();
+          });
+        }
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            closeModal(modalId);
+          });
+        }
+        
+        // Cerrar al hacer clic fuera del contenido
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+              closeModal(modalId);
+            }
+          });
+        }
+      }
+      
+      // Configurar modales
+      setupModal('open-contacto', 'contacto-modal', 'close-contacto-modal');
+      setupModal('open-contacto-mobile', 'contacto-modal', 'close-contacto-modal');
+      setupModal('cart-btn', 'cart-modal', 'close-cart-modal');
+      setupModal('ver-galeria-btn', 'galeria-modal', 'close-galeria-modal');
+      
+      // Ampliar imágenes en la galería modal
+      document.querySelectorAll('#galeria-modal .producto-img').forEach(img => {
+        img.addEventListener('click', function() {
+          const expandedImg = document.getElementById('expanded-image');
+          if (expandedImg) {
+            expandedImg.src = this.src;
+            expandedImg.alt = this.alt;
+            openModal('image-modal');
+          }
+        });
+      });
+      
+      // Cerrar modal de imagen ampliada
+      document.querySelector('.close-image-btn').addEventListener('click', function() {
+        closeModal('image-modal');
+      });
+      
+      // Formulario de contacto
+      const contactoForm = document.getElementById('formulario-contacto');
+      if (contactoForm) {
+        contactoForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const submitBtn = this.querySelector('button[type="submit"]');
+          if (!submitBtn) return;
+          
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+          
+          const formData = new FormData(this);
+          const data = {
+            nombre: formData.get('nombre') || '',
+            email: formData.get('email') || '',
+            telefono: formData.get('telefono') || 'No proporcionado',
+            asunto: formData.get('asunto') || '',
+            mensaje: formData.get('mensaje') || ''
+          };
+          
+          const mensajeCompleto = `
+            Nombre: ${data.nombre}
+            Email: ${data.email}
+            Teléfono: ${data.telefono}
+            Asunto: ${data.asunto}
+            
+            Mensaje:
+            ${data.mensaje}
+          `;
+          
+          try {
+            await emailjs.send('service_g30yxy2', 'template_8kanrvm', {
+              from_name: data.nombre,
+              from_email: data.email,
+              telefono: data.telefono,
+              asunto: data.asunto,
+              message: mensajeCompleto,
+              reply_to: data.email
+            });
+            
+            // Mostrar mensaje de exito
+            document.getElementById('contacto-form-container').style.display = 'none';
+            document.getElementById('contacto-thank-you').style.display = 'block';
+          } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+            alert('Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ENVIAR MENSAJE';
+          }
+        });
+      }
+      
+      // Formulario del carrito
+      const cartForm = document.getElementById('formulario-cart');
+      if (cartForm) {
+        cartForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const submitBtn = this.querySelector('button[type="submit"]');
+          if (!submitBtn) return;
+          
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+          
+          const formData = new FormData(this);
+          const data = {
+            nombre: formData.get('nombre') || '',
+            email: formData.get('email') || '',
+            telefono: formData.get('telefono') || '',
+            mensaje: formData.get('mensaje') || 'Ninguno'
+          };
+          
+          const productos = cart.map(item => `${item.name}`).join('\n');
+          
+          const mensajeCompleto = `
+            Nombre: ${data.nombre}
+            Email: ${data.email}
+            Teléfono: ${data.telefono}
+            
+            PRODUCTOS SELECCIONADOS:
+            ${productos}
+            
+            Comentarios adicionales:
+            ${data.mensaje}
+          `;
+          
+          try {
+            await emailjs.send('service_g30yxy2', 'template_8kanrvm', {
+              from_name: data.nombre,
+              from_email: data.email,
+              telefono: data.telefono,
+              asunto: 'Solicitud de presupuesto desde el carrito',
+              message: mensajeCompleto,
+              reply_to: data.email
+            });
+            
+            // Mostrar mensaje de exito y vaciar carrito
+            document.getElementById('cart-content').style.display = 'none';
+            document.getElementById('cart-thank-you').style.display = 'block';
+            cart = [];
+            updateCartDisplay();
+          } catch (error) {
+            console.error('Error al enviar el formulario del carrito:', error);
+            alert('Hubo un error al enviar la solicitud. Por favor, inténtelo de nuevo más tarde.');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ENVIAR SOLICITUD';
+          }
+        });
+      }
+      
+      // Botones "Volver al inicio"
+      document.getElementById('back-to-home-contacto')?.addEventListener('click', function() {
+        closeModal('contacto-modal');
+        document.getElementById('contacto-form-container').style.display = 'block';
+        document.getElementById('contacto-thank-you').style.display = 'none';
+        document.getElementById('formulario-contacto').reset();
+      });
+      
+      document.getElementById('back-to-home-cart')?.addEventListener('click', function() {
+        closeModal('cart-modal');
+        document.getElementById('cart-content').style.display = 'block';
+        document.getElementById('cart-thank-you').style.display = 'none';
+        document.getElementById('formulario-cart').reset();
+      });
+      
+      // Scroll suave para enlaces internos
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              const navbarHeight = document.querySelector('.navbar').offsetHeight;
+              const targetPosition = targetElement.offsetTop - navbarHeight;
+              
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+              
+              // Actualizar URL sin recargar
+              history.pushState(null, null, `#${targetId}`);
+            }
+          }
+        });
+      });
+      
+      // Inicializar el contador del carrito
+      updateCartCount();
+    });
+  </script>
+</body>
+</html>
